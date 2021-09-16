@@ -1,0 +1,76 @@
+﻿@*@model calc.Models.Calculator*@
+@model calc.Models.Calculator
+
+<style>
+    .InLine {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    table.ttr {
+        text-decoration: none;
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+    }
+
+        table.ttr td {
+            font-size: 25px;
+        }
+
+        table.ttr td, table.ttr th {
+            line-height: 25px;
+            vertical-align: middle;
+        }	
+           
+</style>
+
+<div class="jumbotron" style="        background-color: #ffffff; padding-top: 10px;
+        padding-bottom: 500px;
+        margin-bottom: 0px;
+        margin-bottom: 0px;
+        margin-top: 10px;
+        opacity: .9;">
+    <h2 style="text-align:center">Калькулятор</h2>
+    <h4 style="text-align:center">для десятичных чисел используйте ","</h4>
+    @Html.ActionLink("История", "Report")
+    <table class="ttr">
+
+        <tbody>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <tr>
+                    <td colspan="2">
+                        1-ое:
+                        @Html.TextBoxFor(x => x.Fterm)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        2-ое:
+                        @Html.TextBoxFor(x => x.Sterm)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">@Html.DropDownListFor(m => m.Action, new SelectList(Enum.GetValues(typeof(calc.Models.Action))))</td>
+                    <td style="text-align:left"><input type="submit" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Рез-т:
+                        @Html.TextBoxFor(x => x.Result)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        IP:
+                        @Html.TextBoxFor(x => x.IP)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

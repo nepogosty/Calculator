@@ -1,0 +1,47 @@
+﻿@model IEnumerable<calc.Models.Calculator>
+
+@{
+    ViewData["Title"] = "Report";
+}
+
+
+<form action="/Home/Report" method="post" style="display: flex; align-items: center; justify-content: space-between; ">
+
+    <div class="per">Период</div>
+    <input name="datestart" type="datetime-local">
+    <p><strong>&#8212&#8212</strong></p>
+    <input name="dateend" type="datetime-local">
+    <button type="submit" class="pos"><div class="posm">Посмотреть</div></button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дата
+            </th>
+            <th>
+                Решение
+            </th>
+            <th>
+                IP
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Solution)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IP)
+            </td>
+
+
+        </tr>
+}
+    </tbody>
+</table>
