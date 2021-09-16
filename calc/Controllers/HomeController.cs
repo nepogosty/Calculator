@@ -22,7 +22,7 @@ namespace calc.Controllers
         {
             _logger = logger;
         }
-        /123
+       
         public IActionResult Index()
         {
 
